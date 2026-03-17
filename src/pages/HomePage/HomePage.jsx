@@ -20,15 +20,15 @@ export default function HomePage() {
       {/* Hero */}
       <section className="home__hero">
         <div className="home__hero-content">
-          <p className="home__eyebrow">Trusted Visa Experts Since 2010</p>
+          {/* <p className="home__eyebrow">Trusted Visa Experts Since 2010</p> */}
           <h1 className="home__title">
             Your Gateway to<br />
             <span className="home__title-gold">Global Opportunities</span>
           </h1>
-          <p className="home__subtitle">
+          {/* <p className="home__subtitle">
             Expert consultancy for student, work, and tourist visas.
             Over 15,000 successful applications across 60+ countries.
-          </p>
+          </p> */}
           <div className="home__hero-btns">
             <button className="home__btn-primary"   onClick={() => goTo('/register')}>Apply Now</button>
             <button className="home__btn-secondary" onClick={() => goTo('/request-call')}>Request a Call</button>
