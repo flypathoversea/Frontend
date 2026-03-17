@@ -33,7 +33,7 @@ export default function HomePage() {
             <button className="home__btn-primary"   onClick={() => goTo('/register')}>Apply Now</button>
             <button className="home__btn-secondary" onClick={() => goTo('/request-call')}>Request a Call</button>
           </div>
-          <div className="home__stats">
+          {/* <div className="home__stats">
             <div className="home__stat">
               <span className="home__stat-num">15K+</span>
               <span className="home__stat-label">Approvals</span>
@@ -53,7 +53,7 @@ export default function HomePage() {
               <span className="home__stat-num">14+</span>
               <span className="home__stat-label">Years Experience</span>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="home__hero-orb home__hero-orb--1" />
         <div className="home__hero-orb home__hero-orb--2" />

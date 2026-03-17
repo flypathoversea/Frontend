@@ -3,10 +3,10 @@ import Footer from '../../components/Footer/Footer.jsx';
 import './AboutPage.css';
 
 const TEAM = [
-  { name: 'Rajiv Sharma',   role: 'Founder & CEO',          exp: '20 years in immigration law' },
-  { name: 'Priya Nair',     role: 'Head of Student Visas',  exp: 'Former UK Home Office advisor' },
-  { name: 'Arjun Mehta',    role: 'Work Visa Specialist',   exp: '12 years in corporate relocation' },
-  { name: 'Sunita Reddy',   role: 'Tourist Visa Expert',    exp: 'Schengen & Asia-Pacific specialist' },
+  { name: 'G Anil',   role: 'Visa Specialist' },
+  { name: 'A Purendhar Reddy',     role: 'Work Visa Specialist' },
+  { name: 'Prem Krishna',    role: 'Operations Manager' },
+  // { name: 'Sunita Reddy',   role: 'Tourist Visa Expert',    exp: 'Schengen & Asia-Pacific specialist' },
 ];
 
 const MILESTONES = [
@@ -53,7 +53,7 @@ export default function AboutPage() {
               requirements of your destination country and visa type.
             </p>
           </div>
-          <div className="about__mission-stats">
+          {/* <div className="about__mission-stats">
             {[
               { num: '15,000+', label: 'Visas Approved' },
               { num: '60+',     label: 'Countries Covered' },
@@ -67,12 +67,12 @@ export default function AboutPage() {
                 <span className="about__stat-label">{label}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="about__timeline">
+      {/* <section className="about__timeline">
         <div className="about__timeline-inner">
           <div className="about__section-header">
             <p className="about__eyebrow">Our Journey</p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team */}
       <section className="about__team">
