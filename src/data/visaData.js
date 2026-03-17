@@ -1,0 +1,103 @@
+export const VISA_TYPES = [
+  {
+    type: 'student',
+    label: 'Student Visa',
+    tagline: 'Study Abroad',
+    emoji: '🎓',
+    accentColor: '#1a6fa8',
+    cardGradient: 'linear-gradient(140deg, #0d1b2a 0%, #1a6fa8 100%)',
+    processing: '4–8 Weeks',
+    duration: '1–4 Years',
+    successRate: '94%',
+    description:
+      'Pursue world-class education at top universities globally. Our consultants guide you through admissions, documentation, and interview preparation.',
+    highlights: [
+      'University admission support',
+      'Financial documentation guidance',
+      'Visa interview preparation',
+      'Pre-departure orientation',
+    ],
+    requirements: [
+      'Valid passport (6+ months validity)',
+      'University acceptance letter',
+      'Proof of funds / sponsorship',
+      'Academic transcripts',
+      'English proficiency scores',
+      'Medical insurance',
+      'Passport-size photographs',
+    ],
+    destinations: ['USA', 'UK', 'Canada', 'Australia', 'Germany', 'France'],
+  },
+  {
+    type: 'work',
+    label: 'Work Visa',
+    tagline: 'Career Abroad',
+    emoji: '💼',
+    accentColor: '#2e7d5e',
+    cardGradient: 'linear-gradient(140deg, #0d1b2a 0%, #2e7d5e 100%)',
+    processing: '6–12 Weeks',
+    duration: '1–5 Years',
+    successRate: '91%',
+    description:
+      'Advance your career internationally. We connect professionals with global opportunities and handle every aspect of the work visa process.',
+    highlights: [
+      'Job offer verification',
+      'Employer sponsorship docs',
+      'Skills assessment support',
+      'Relocation guidance',
+    ],
+    requirements: [
+      'Valid passport (12+ months validity)',
+      'Confirmed job offer letter',
+      'Employment contract',
+      'Educational qualifications',
+      'Work experience proof',
+      'Background check clearance',
+      'Health examination results',
+    ],
+    destinations: ['UAE', 'USA', 'Canada', 'Singapore', 'Germany', 'UK'],
+  },
+  {
+    type: 'tourist',
+    label: 'Tourist Visa',
+    tagline: 'Explore the World',
+    emoji: '✈️',
+    accentColor: '#8b4513',
+    cardGradient: 'linear-gradient(140deg, #0d1b2a 0%, #c8a84b 100%)',
+    processing: '1–3 Weeks',
+    duration: '30–180 Days',
+    successRate: '97%',
+    description:
+      'Explore the world hassle-free. Our tourism specialists ensure quick approvals so you can focus on creating unforgettable memories.',
+    highlights: [
+      'Fast-track processing',
+      'Itinerary planning support',
+      'Travel insurance guidance',
+      'Multiple entry options',
+    ],
+    requirements: [
+      'Valid passport (6+ months validity)',
+      'Bank statements (3–6 months)',
+      'Travel itinerary',
+      'Hotel bookings',
+      'Return flight tickets',
+      'Travel insurance',
+      'Proof of employment',
+    ],
+    destinations: ['Schengen Zone', 'Japan', 'UAE', 'Thailand', 'Turkey', 'USA'],
+  },
+];
+
+export const getVisa = (type) => VISA_TYPES.find((v) => v.type === type);
+
+export const COUNTRIES = [
+  'Afghanistan','Albania','Algeria','Argentina','Australia','Austria',
+  'Bangladesh','Belgium','Brazil','Canada','China','Colombia','Denmark',
+  'Egypt','Ethiopia','Finland','France','Germany','Ghana','Greece',
+  'India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Japan',
+  'Jordan','Kenya','Malaysia','Mexico','Morocco','Nepal','Netherlands',
+  'New Zealand','Nigeria','Norway','Pakistan','Philippines','Poland',
+  'Portugal','Russia','Saudi Arabia','Singapore','South Africa',
+  'South Korea','Spain','Sri Lanka','Sweden','Switzerland','Thailand',
+  'Turkey','UAE','UK','USA','Vietnam','Zimbabwe',
+];

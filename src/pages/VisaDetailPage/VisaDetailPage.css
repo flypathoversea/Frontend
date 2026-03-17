@@ -1,0 +1,194 @@
+.vdp {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Two-column layout below navbar ── */
+.vdp__layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  margin-top: 68px; /* navbar height */
+  min-height: calc(100vh - 68px);
+}
+
+/* ── Back button ── */
+.vdp__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1.75rem;
+  transition: background var(--transition);
+}
+
+.vdp__back:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Left info panel ── */
+.vdp__info {
+  position: sticky;
+  top: 68px;
+  height: calc(100vh - 68px);
+  overflow-y: auto;
+  padding: 2.5rem 2rem;
+}
+
+.vdp__info-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.vdp__info-emoji {
+  display: block;
+  font-size: 2.8rem;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25));
+}
+
+.vdp__info-title {
+  font-size: 2.2rem;
+  color: var(--color-white);
+  font-weight: 400;
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+}
+
+.vdp__info-desc {
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Meta */
+.vdp__meta {
+  display: flex;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.vdp__meta-item {
+  flex: 1;
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.vdp__meta-item:last-child { border-right: none; }
+
+.vdp__meta-label {
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 3px;
+}
+
+.vdp__meta-value {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-gold-light);
+}
+
+/* Blocks */
+.vdp__block { margin-bottom: 1.4rem; }
+
+.vdp__block-title {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.65rem;
+  font-weight: 500;
+}
+
+.vdp__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.vdp__list li {
+  display: flex;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+
+.vdp__tick { color: var(--color-gold); flex-shrink: 0; }
+.vdp__dot  { color: rgba(255,255,255,0.3); flex-shrink: 0; }
+
+.vdp__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.vdp__tag {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.73rem;
+}
+
+/* ── Right form panel ── */
+.vdp__form-panel {
+  background: var(--color-cream);
+  padding: 3rem 3rem 4rem;
+  overflow-y: auto;
+}
+
+.vdp__form-title {
+  font-size: 1.9rem;
+  color: var(--color-navy);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .vdp__layout {
+    grid-template-columns: 1fr;
+    margin-top: 68px;
+  }
+
+  .vdp__info {
+    position: static;
+    height: auto;
+  }
+
+  .vdp__form-panel { padding: 2rem 1.5rem; }
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .vdp__layout        { grid-template-columns: 1fr; margin-top: 68px; }
+  .vdp__info          { position: static; height: auto; padding: 2rem 1.5rem; }
+  .vdp__form-panel    { padding: 2rem 1.5rem; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .vdp__info          { padding: 1.5rem 1rem; }
+  .vdp__info-title    { font-size: 1.75rem; }
+  .vdp__form-panel    { padding: 1.5rem 1rem; }
+  .vdp__form-title    { font-size: 1.5rem; }
+  .vdp__meta          { flex-direction: column; }
+  .vdp__meta-item     { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .vdp__meta-item:last-child { border-bottom: none; }
+}

@@ -1,0 +1,206 @@
+.am-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 27, 42, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease;
+}
+
+.am-modal {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 820px;
+  margin: auto;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: fadeUp 0.3s ease;
+}
+
+/* ── Header ── */
+.am-header {
+  background: var(--color-navy);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.am-header__left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.am-header__emoji { font-size: 2rem; }
+
+.am-header__name {
+  font-size: 1.6rem;
+  color: var(--color-white);
+  font-weight: 400;
+}
+
+.am-header__sub {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 2px;
+}
+
+.am-header__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.am-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.am-close:hover { background: rgba(255, 255, 255, 0.2); color: var(--color-white); }
+
+/* ── Body ── */
+.am-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── Section ── */
+.am-section__title {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-gray-1);
+}
+
+.am-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Detail row ── */
+.am-detail { display: flex; flex-direction: column; gap: 2px; }
+
+.am-detail__label {
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+  font-weight: 500;
+}
+
+.am-detail__value {
+  font-size: 0.88rem;
+  color: var(--color-navy);
+}
+
+/* ── Admin panel ── */
+.am-admin {
+  background: var(--color-gray-1);
+  border: 1px solid var(--color-gray-2);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+}
+
+.am-admin__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.am-admin__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.am-admin__field label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-4);
+}
+
+.am-admin__field select,
+.am-admin__field textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--color-gray-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.86rem;
+  color: var(--color-navy);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.am-admin__field select:focus,
+.am-admin__field textarea:focus {
+  border-color: var(--color-navy);
+}
+
+.am-admin__field--full { grid-column: 1 / -1; }
+
+.am-admin__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.am-save {
+  padding: 0.65rem 1.5rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: opacity var(--transition);
+}
+
+.am-save:hover:not(:disabled) { opacity: 0.85; }
+.am-save:disabled { opacity: 0.55; }
+
+.am-delete {
+  padding: 0.65rem 1.25rem;
+  border: 1.5px solid rgba(192, 57, 43, 0.4);
+  color: var(--color-danger);
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.am-delete:hover {
+  background: var(--color-danger);
+  color: var(--color-white);
+  border-color: var(--color-danger);
+}
+
+@media (max-width: 600px) {
+  .am-header { flex-direction: column; align-items: flex-start; }
+  .am-body   { padding: 1.25rem; }
+}

@@ -1,0 +1,442 @@
+.ad {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: var(--color-gray-1);
+}
+
+/* ── Sidebar ── */
+.ad__sidebar {
+  background: var(--color-navy);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  gap: 1.5rem;
+}
+
+.ad__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.ad__logo-emblem { font-size: 1.65rem; color: var(--color-gold); }
+
+.ad__logo-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.ad__logo-tag {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-top: 1px;
+}
+
+.ad__nav { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.ad__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-xs);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.84rem;
+  width: 100%;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+
+.ad__nav-item:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); }
+
+.ad__nav-item--active {
+  background: rgba(255,255,255,0.1);
+  color: var(--color-white);
+}
+
+.ad__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.ad__user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-sm);
+  margin-top: auto;
+}
+
+.ad__avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad__user-name  { font-size: 0.82rem; color: var(--color-white); font-weight: 500; }
+.ad__user-email { font-size: 0.68rem; color: rgba(255,255,255,0.38); }
+
+.ad__logout {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45);
+  border-radius: var(--radius-xs);
+  font-size: 0.8rem;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.ad__logout:hover { border-color: var(--color-danger); color: var(--color-danger); }
+
+/* ── Main ── */
+.ad__main { padding: 2rem 2rem 3rem; overflow-y: auto; }
+
+/* Topbar */
+.ad__topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.ad__heading {
+  font-size: 1.9rem;
+  color: var(--color-navy);
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.ad__topbar-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.ad__filters {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.ad__search {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--color-gray-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.84rem;
+  color: var(--color-navy);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.ad__search:focus { border-color: var(--color-navy); }
+
+.ad__filters select {
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--color-gray-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.84rem;
+  color: var(--color-navy);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  cursor: pointer;
+  outline: none;
+}
+
+.ad__search-btn {
+  padding: 0.6rem 1.2rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: opacity var(--transition);
+}
+
+.ad__search-btn:hover { opacity: 0.85; }
+
+/* Export */
+.ad__export-wrap { position: relative; }
+
+.ad__export-btn {
+  padding: 0.6rem 1.1rem;
+  background: var(--color-success);
+  color: var(--color-white);
+  border-radius: var(--radius-xs);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: opacity var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ad__export-btn:hover { opacity: 0.88; }
+
+.ad__export-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  min-width: 240px;
+  z-index: 50;
+  overflow: hidden;
+  animation: fadeUp 0.15s ease;
+}
+
+.ad__export-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+  color: var(--color-navy);
+  transition: background var(--transition);
+}
+
+.ad__export-menu button:hover { background: var(--color-gray-1); }
+
+/* Empty */
+.ad__empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--color-gray-3);
+}
+
+.ad__empty p { font-size: 1.15rem; margin-bottom: 0.4rem; }
+.ad__empty small { font-size: 0.84rem; }
+
+/* ── Cards grid ── */
+.ad__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.1rem;
+}
+
+/* Application card */
+.ad__card {
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: fadeUp 0.4s ease both;
+}
+
+.ad__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.ad__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.ad__card-emoji { font-size: 1.4rem; }
+
+.ad__card-name {
+  font-size: 1.1rem;
+  color: var(--color-navy);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.ad__card-email {
+  font-size: 0.76rem;
+  color: var(--color-gray-3);
+  margin-bottom: 0.4rem;
+}
+
+.ad__card-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-gray-4);
+  background: var(--color-gray-1);
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--radius-xs);
+  margin: 0.6rem 0;
+}
+
+.ad__card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-gray-1);
+  font-size: 0.7rem;
+  color: var(--color-gray-3);
+}
+
+/* Callback card */
+.ad__call-card {
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: fadeUp 0.4s ease both;
+}
+
+.ad__call-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+}
+
+.ad__call-badge--new       { background: rgba(200,168,75,0.12); color: #c87f1a; border: 1px solid rgba(200,168,75,0.3); }
+.ad__call-badge--contacted { background: rgba(26,111,168,0.1);  color: #1a6fa8; border: 1px solid rgba(26,111,168,0.25); }
+.ad__call-badge--closed    { background: rgba(46,125,94,0.1);   color: #2e7d5e; border: 1px solid rgba(46,125,94,0.25); }
+
+.ad__call-time {
+  font-size: 0.76rem;
+  color: var(--color-gray-3);
+}
+
+.ad__call-msg {
+  font-size: 0.78rem;
+  color: var(--color-gray-4);
+  font-style: italic;
+  line-height: 1.5;
+  border-left: 2px solid var(--color-gray-2);
+  padding-left: 0.6rem;
+  margin: 0.25rem 0;
+}
+
+.ad__call-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-gray-1);
+}
+
+.ad__call-actions select {
+  padding: 0.35rem 0.65rem;
+  border: 1.5px solid var(--color-gray-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  outline: none;
+  cursor: pointer;
+}
+
+.ad__call-date {
+  font-size: 0.7rem;
+  color: var(--color-gray-3);
+}
+
+@media (max-width: 900px) {
+  .ad { grid-template-columns: 1fr; }
+  .ad__sidebar { display: none; }
+}
+
+/* ── Tablet (600px – 900px) ── */
+@media (max-width: 900px) and (min-width: 601px) {
+  .ad__grid { grid-template-columns: repeat(2, 1fr); }
+  .ad__main { padding: 1.5rem; }
+}
+
+/* ── Mobile (≤ 600px) ── */
+@media (max-width: 600px) {
+  .ad__main { padding: 1rem; }
+  .ad__heading { font-size: 1.4rem; }
+
+  .ad__topbar { flex-direction: column; align-items: stretch; }
+  .ad__topbar-right { align-items: stretch; }
+
+  .ad__filters { flex-direction: column; }
+  .ad__search  { min-width: unset; width: 100%; }
+  .ad__filters select { width: 100%; }
+  .ad__search-btn  { width: 100%; }
+  .ad__export-btn  { width: 100%; justify-content: center; }
+  .ad__export-menu { left: 0; right: 0; transform: none; min-width: unset; }
+
+  .ad__grid { grid-template-columns: 1fr; }
+
+  .ad__stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Mobile bottom tab bar (replaces hidden sidebar) ── */
+.ad__mobile-tabs {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .ad__mobile-tabs {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--color-navy);
+    border-top: 1px solid rgba(200,168,75,0.15);
+    z-index: 100;
+    height: 60px;
+  }
+
+  .ad__mobile-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.45);
+    transition: color var(--transition);
+    letter-spacing: 0.04em;
+  }
+
+  .ad__mobile-tab span:first-child { font-size: 1.2rem; }
+
+  .ad__mobile-tab--active { color: var(--color-gold); }
+  .ad__mobile-tab:hover   { color: rgba(255,255,255,0.8); }
+
+  /* Push main content up so it doesn't hide behind the tab bar */
+  .ad__main { padding-bottom: 80px; }
+}

@@ -1,0 +1,62 @@
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 27, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.confirm-box {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 2rem 2.5rem;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.25s ease;
+}
+
+.confirm-message {
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.confirm-cancel,
+.confirm-ok {
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition);
+}
+
+.confirm-cancel {
+  border: 1.5px solid var(--color-gray-2);
+  color: var(--color-gray-4);
+  background: transparent;
+}
+
+.confirm-cancel:hover {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+
+.confirm-ok {
+  background: var(--color-danger);
+  color: var(--color-white);
+}
+
+.confirm-ok:hover { opacity: 0.88; }

@@ -1,0 +1,70 @@
+.step-indicator {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 2.5rem;
+}
+
+.step-indicator__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.step-indicator__dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-gray-2);
+  color: var(--color-gray-3);
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.step-indicator__dot.active {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.step-indicator__dot.done {
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.step-indicator__label {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+  margin-top: 6px;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.step-indicator__label.active {
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+/* Connecting line (sits between items) */
+.step-indicator__line {
+  position: absolute;
+  top: 17px;
+  left: calc(50% + 18px);
+  width: calc(100% - 36px);
+  height: 2px;
+  background: var(--color-gray-2);
+  transition: background var(--transition);
+}
+
+.step-indicator__line.done {
+  background: var(--color-success);
+}
