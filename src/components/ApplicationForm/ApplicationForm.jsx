@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import StepIndicator from '../StepIndicator/StepIndicator.jsx';
-import { submitApplication } from '../../services/api.js';
+import { submitApplication } from '../../services/firebase.js';
 import { COUNTRIES } from '../../data/visaData.js';
 import './ApplicationForm.css';
 
@@ -26,7 +26,6 @@ export default function ApplicationForm({ visaType }) {
     setError('');
   };
 
-  /* ── Validation — only truly required fields ── */
   const v1 = () => {
     const req = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'nationality'];
     for (const k of req) if (!form[k]) return 'Please complete all required fields.';
@@ -60,16 +59,16 @@ export default function ApplicationForm({ visaType }) {
     if (err) { setError(err); return; }
     setLoading(true);
     try {
-      const res = await submitApplication({ ...form, visaType });
-      setAppId(res.data.applicationId);
+      const result = await submitApplication({ ...form, visaType });
+      setAppId(result.id);
     } catch (e) {
-      setError(e.response?.data?.message || 'Submission failed. Please try again.');
+      setError('Submission failed. Please try again.');
+      console.error(e);
     } finally {
       setLoading(false);
     }
   };
 
-  /* ── Success ── */
   if (appId) {
     return (
       <div className="af-success">
@@ -88,7 +87,7 @@ export default function ApplicationForm({ visaType }) {
     <div className="af">
       <StepIndicator current={step} />
 
-      {/* ── Step 1 — Personal Info ── */}
+      {/* Step 1 — Personal */}
       {step === 1 && (
         <div className="af__section">
           <div className="af__row2">
@@ -115,7 +114,7 @@ export default function ApplicationForm({ visaType }) {
         </div>
       )}
 
-      {/* ── Step 2 — Visa Details ── */}
+      {/* Step 2 — Visa Details */}
       {step === 2 && (
         <div className="af__section">
           <div className="af__row2">
@@ -205,7 +204,7 @@ export default function ApplicationForm({ visaType }) {
         </div>
       )}
 
-      {/* ── Step 3 — Address ── */}
+      {/* Step 3 — Address */}
       {step === 3 && (
         <div className="af__section">
           <Field label="Street Address *">

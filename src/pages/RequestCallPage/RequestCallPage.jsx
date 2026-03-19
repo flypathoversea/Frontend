@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navbar  from '../../components/Navbar/Navbar.jsx';
 import Footer  from '../../components/Footer/Footer.jsx';
-import { submitRequestCall } from '../../services/api.js';
+import { submitRequestCall } from '../../services/firebase.js';
 import { COUNTRIES } from '../../data/visaData.js';
 import './RequestCallPage.css';
 
@@ -49,8 +49,6 @@ export default function RequestCallPage() {
       <Navbar />
 
       <div className="rcp__layout">
-
-        {/* LEFT — info */}
         <aside className="rcp__left">
           <p className="rcp__eyebrow">Get in Touch</p>
           <h1 className="rcp__title">Request a<br /><span>Callback</span></h1>
@@ -68,34 +66,25 @@ export default function RequestCallPage() {
               { icon: '📋', text: 'Document checklist provided on call' },
               { icon: '🔒', text: 'Your data is private and secure' },
             ].map(({ icon, text }) => (
-              <li key={text}>
-                <span>{icon}</span>
-                <span>{text}</span>
-              </li>
+              <li key={text}><span>{icon}</span><span>{text}</span></li>
             ))}
           </ul>
 
           <div className="rcp__contact-block">
             <p className="rcp__contact-label">Prefer to contact us directly?</p>
             <p className="rcp__contact-item">📞 +91 40 1234 5678</p>
-            <p className="rcp__contact-item">✉️ info@visapath.com</p>
+            <p className="rcp__contact-item">✉️ info@flypathoverseas.com</p>
             <p className="rcp__contact-item">🕐 Mon–Sat, 9am – 7pm IST</p>
           </div>
         </aside>
 
-        {/* RIGHT — form */}
         <div className="rcp__right">
           {success ? (
             <div className="rcp__success">
               <div className="rcp__success-icon">✓</div>
               <h3>Request Received!</h3>
-              <p>
-                Thank you, <strong>{form.fullName}</strong>. Our team will call you
-                at <strong>{form.phone}</strong> within 2 business hours.
-              </p>
-              <p className="rcp__success-note">
-                A confirmation has been sent to {form.email}.
-              </p>
+              <p>Thank you, <strong>{form.fullName}</strong>. Our team will call you at <strong>{form.phone}</strong> within 2 business hours.</p>
+              <p className="rcp__success-note">A confirmation has been sent to {form.email}.</p>
               <button onClick={() => { setSuccess(false); setForm({ ...BLANK }); }}>
                 Submit Another Request
               </button>
@@ -153,13 +142,8 @@ export default function RequestCallPage() {
 
               <div className="rcp__field">
                 <label>Message (optional)</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={set}
-                  rows={4}
-                  placeholder="Tell us briefly about your situation or any specific questions…"
-                />
+                <textarea name="message" value={form.message} onChange={set} rows={4}
+                  placeholder="Tell us briefly about your situation…" />
               </div>
 
               {error && <p className="rcp__error">{error}</p>}
@@ -170,7 +154,6 @@ export default function RequestCallPage() {
             </form>
           )}
         </div>
-
       </div>
 
       <Footer />

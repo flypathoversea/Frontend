@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginAdmin } from '../../services/api.js';
 import './AdminLoginPage.css';
+
+/* ── Hardcoded admin credentials — change these as needed ── */
+const ADMIN_EMAIL    = 'admin@flypathoverseas.com';
+const ADMIN_PASSWORD = 'Flypath@Admin2026';
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -18,21 +21,22 @@ export default function AdminLoginPage() {
     e.preventDefault();
     if (!form.email || !form.password) { setError('Enter email and password.'); return; }
     setLoading(true);
-    try {
-      const res = await loginAdmin(form.email, form.password);
-      localStorage.setItem('vp_token', res.data.token);
-      localStorage.setItem('vp_admin', JSON.stringify(res.data.admin));
+
+    /* Simulate a small delay for UX */
+    await new Promise(r => setTimeout(r, 600));
+
+    if (form.email === ADMIN_EMAIL && form.password === ADMIN_PASSWORD) {
+      localStorage.setItem('vp_token', 'flypath-admin-token');
+      localStorage.setItem('vp_admin', JSON.stringify({ name: 'Admin', email: ADMIN_EMAIL }));
       navigate('/admin');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Invalid credentials.');
-    } finally {
-      setLoading(false);
+    } else {
+      setError('Invalid credentials.');
     }
+    setLoading(false);
   };
 
   return (
     <div className="alp">
-      {/* Left panel */}
       <div className="alp__left">
         <div className="alp__brand">
           <span className="alp__emblem">⚜</span>
@@ -49,7 +53,6 @@ export default function AdminLoginPage() {
         </ul>
       </div>
 
-      {/* Right panel – form */}
       <div className="alp__right">
         <h3 className="alp__form-title">Admin Login</h3>
         <p className="alp__form-sub">Access restricted to authorised personnel only.</p>
@@ -57,25 +60,13 @@ export default function AdminLoginPage() {
         <form className="alp__form" onSubmit={submit}>
           <div className="alp__field">
             <label>Email Address</label>
-            <input
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={set}
-              placeholder="admin@visapath.com"
-              autoComplete="email"
-            />
+            <input name="email" type="email" value={form.email} onChange={set}
+              placeholder="admin@flypathoverseas.com" autoComplete="email" />
           </div>
           <div className="alp__field">
             <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={set}
-              placeholder="••••••••"
-              autoComplete="current-password"
-            />
+            <input name="password" type="password" value={form.password} onChange={set}
+              placeholder="••••••••" autoComplete="current-password" />
           </div>
 
           {error && <p className="alp__error">{error}</p>}
@@ -86,11 +77,6 @@ export default function AdminLoginPage() {
         </form>
 
         <button className="alp__back" onClick={() => navigate('/')}>← Return to main site</button>
-
-        <p className="alp__hint">
-          Default credentials: <code>admin@visapath.com</code> / <code>Admin@1234</code><br />
-          <small>Run <code>POST /api/auth/seed</code> once to create the admin account.</small>
-        </p>
       </div>
     </div>
   );

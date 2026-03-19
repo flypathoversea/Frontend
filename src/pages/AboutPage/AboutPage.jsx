@@ -27,7 +27,7 @@ export default function AboutPage() {
       <section className="about__hero">
         <div className="about__hero-content">
           <p className="about__eyebrow">Who We Are</p>
-          <h1 className="about__title">Turning Visa Dreams<br /><span>Into Reality Since 2010</span></h1>
+          <h1 className="about__title">Turning Visa Dreams<br /><span>Into Reality</span></h1>
           <p className="about__subtitle">
             Flypath Overseas is a leading immigration services firm based in Hyderabad, India.
             We specialise in student, work, and tourist visa applications for over 60 countries worldwide.
