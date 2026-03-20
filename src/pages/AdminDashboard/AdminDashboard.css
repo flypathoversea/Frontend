@@ -440,3 +440,24 @@
   /* Push main content up so it doesn't hide behind the tab bar */
   .ad__main { padding-bottom: 80px; }
 }
+
+/* ── Delete button on card ── */
+.ad__card-delete {
+  width: 100%;
+  margin-top: 0.65rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1.5px solid rgba(192, 57, 43, 0.35);
+  color: var(--color-danger);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.ad__card-delete:hover {
+  background: var(--color-danger);
+  color: var(--color-white);
+  border-color: var(--color-danger);
+}
