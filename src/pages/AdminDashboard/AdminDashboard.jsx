@@ -261,15 +261,14 @@ export default function AdminDashboard() {
                     </div>
                     <div className="ad__card-footer">
                       <span>{fmt(app.createdAt)}</span>
-                      <span>🛂 {app.passportNumber || '—'}</span>
+                      <button
+                        className="ad__card-delete"
+                        onClick={e => { e.stopPropagation(); setDeleteId(app.id); }}
+                        title="Delete application"
+                      >
+                        🗑
+                      </button>
                     </div>
-                    <button
-                      className="ad__card-delete"
-                      onClick={e => { e.stopPropagation(); setDeleteId(app.id); }}
-                      title="Delete application"
-                    >
-                      🗑 Delete
-                    </button>
                   </div>
                 ))}
               </div>
