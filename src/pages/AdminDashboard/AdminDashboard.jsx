@@ -74,7 +74,6 @@ export default function AdminDashboard() {
   const [search,  setSearch]  = useState('');
   const [filterStatus,   setFilterStatus]   = useState('all');
   const [filterVisaType, setFilterVisaType] = useState('all');
-  const [selected,       setSelected]       = useState(null);
   const [deleteId,       setDeleteId]       = useState(null);
   const [showExportMenu, setShowExportMenu] = useState(false);
 
@@ -135,12 +134,7 @@ export default function AdminDashboard() {
     navigate('/admin/login');
   };
 
-  /* ── Status update ── */
-  const handleStatusUpdate = async (id, status, adminNotes) => {
-    await updateApplicationStatus(id, status, adminNotes);
-    setApps(prev => prev.map(a => a.id === id ? { ...a, status, adminNotes } : a));
-    if (selected?.id === id) setSelected(prev => ({ ...prev, status, adminNotes }));
-  };
+
 
   /* ── Delete ── */
   const handleDeleteConfirm = async () => {
@@ -248,7 +242,7 @@ export default function AdminDashboard() {
             ) : (
               <div className="ad__grid">
                 {filteredApps.map(app => (
-                  <div key={app.id} className="ad__card" onClick={() => setSelected(app)}>
+                  <div key={app.id} className="ad__card" onClick={() => navigate(`/admin/application/${app.id}`)}>
                     <div className="ad__card-top">
                       <span className="ad__card-emoji">{EMOJI[app.visaType]}</span>
                       <StatusBadge status={app.status} />
@@ -330,15 +324,7 @@ export default function AdminDashboard() {
         )}
       </main>
 
-      {/* Application Detail Modal */}
-      {selected && (
-        <AppModal
-          app={selected}
-          onClose={() => setSelected(null)}
-          onSave={handleStatusUpdate}
-          onDelete={id => setDeleteId(id)}
-        />
-      )}
+
 
       {deleteId && (
         <ConfirmDialog
@@ -359,146 +345,6 @@ export default function AdminDashboard() {
         <button className="ad__mobile-tab" onClick={logout}>
           <span>🚪</span><span>Logout</span>
         </button>
-      </div>
-    </div>
-  );
-}
-
-/* ── Inline Modal ── */
-function AppModal({ app, onClose, onSave, onDelete }) {
-  const [status, setStatus]   = useState(app.status);
-  const [notes,  setNotes]    = useState(app.adminNotes || '');
-  const [saving, setSaving]   = useState(false);
-  const [saved,  setSaved]    = useState(false);
-
-  const fmt = (val) => {
-    if (!val) return '—';
-    if (val?.toDate) return val.toDate().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-    return new Date(val).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-  };
-
-  const save = async () => {
-    setSaving(true);
-    await onSave(app.id, status, notes);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-    setSaving(false);
-  };
-
-  const Row = ({ label, value }) => (
-    <div className="am-detail">
-      <span className="am-detail__label">{label}</span>
-      <span className="am-detail__value">{value || '—'}</span>
-    </div>
-  );
-
-  return (
-    <div className="am-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
-      <div className="am-modal">
-        <div className="am-header">
-          <div className="am-header__left">
-            <span className="am-header__emoji">{{ student:'🎓', work:'💼', tourist:'✈️' }[app.visaType]}</span>
-            <div>
-              <h2 className="am-header__name">{app.firstName} {app.lastName}</h2>
-              <p className="am-header__sub">{app.visaType?.charAt(0).toUpperCase() + app.visaType?.slice(1)} Visa · Applied {fmt(app.createdAt)}</p>
-            </div>
-          </div>
-          <button className="am-close" onClick={onClose}>✕</button>
-        </div>
-
-        <div className="am-body">
-          <section className="am-section">
-            <h4 className="am-section__title">Personal Information</h4>
-            <div className="am-section__grid">
-              <Row label="Full Name"       value={`${app.firstName} ${app.lastName}`} />
-              <Row label="Email"           value={app.email} />
-              <Row label="Phone"           value={app.phone} />
-              <Row label="Date of Birth"   value={fmt(app.dateOfBirth)} />
-              <Row label="Nationality"     value={app.nationality} />
-              <Row label="Passport No."    value={app.passportNumber} />
-              <Row label="Passport Expiry" value={fmt(app.passportExpiry)} />
-            </div>
-          </section>
-
-          <section className="am-section">
-            <h4 className="am-section__title">Travel Details</h4>
-            <div className="am-section__grid">
-              <Row label="Destination"  value={app.destinationCountry} />
-              <Row label="Arrival Date" value={fmt(app.intendedArrival)} />
-            </div>
-          </section>
-
-          {app.visaType === 'student' && (
-            <section className="am-section">
-              <h4 className="am-section__title">Education Details</h4>
-              <div className="am-section__grid">
-                <Row label="University" value={app.universityName} />
-                <Row label="Course"     value={app.courseName} />
-                <Row label="Duration"   value={app.courseDuration} />
-                <Row label="Funding"    value={app.fundingSource} />
-              </div>
-            </section>
-          )}
-
-          {app.visaType === 'work' && (
-            <section className="am-section">
-              <h4 className="am-section__title">Employment Details</h4>
-              <div className="am-section__grid">
-                <Row label="Employer"  value={app.employerName} />
-                <Row label="Job Title" value={app.jobTitle} />
-                <Row label="Type"      value={app.employmentType} />
-                <Row label="Duration"  value={app.workDuration} />
-              </div>
-            </section>
-          )}
-
-          {app.visaType === 'tourist' && (
-            <section className="am-section">
-              <h4 className="am-section__title">Travel Details</h4>
-              <div className="am-section__grid">
-                <Row label="Purpose"       value={app.travelPurpose} />
-                <Row label="Stay Duration" value={app.stayDuration} />
-                <Row label="Accommodation" value={app.accommodation} />
-                <Row label="Budget"        value={app.travelBudget} />
-              </div>
-            </section>
-          )}
-
-          <section className="am-section">
-            <h4 className="am-section__title">Address</h4>
-            <div className="am-section__grid">
-              <Row label="Street" value={app.address} />
-              <Row label="City"   value={app.city} />
-              <Row label="State"  value={app.state} />
-              <Row label="ZIP"    value={app.zipCode} />
-            </div>
-          </section>
-
-          <section className="am-admin">
-            <h4 className="am-section__title">Admin Actions</h4>
-            <div className="am-admin__grid">
-              <div className="am-admin__field">
-                <label>Status</label>
-                <select value={status} onChange={e => setStatus(e.target.value)}>
-                  <option value="pending">Pending</option>
-                  <option value="under_review">Under Review</option>
-                  <option value="approved">Approved</option>
-                  <option value="rejected">Rejected</option>
-                </select>
-              </div>
-              <div className="am-admin__field am-admin__field--full">
-                <label>Admin Notes</label>
-                <textarea rows={3} value={notes} onChange={e => setNotes(e.target.value)} placeholder="Internal notes…" />
-              </div>
-              <div className="am-admin__actions">
-                <button className="am-save" onClick={save} disabled={saving}>
-                  {saved ? '✓ Saved' : saving ? 'Saving…' : 'Save Changes'}
-                </button>
-                <button className="am-delete" onClick={() => onDelete(app.id)}>Delete</button>
-              </div>
-            </div>
-          </section>
-        </div>
       </div>
     </div>
   );
