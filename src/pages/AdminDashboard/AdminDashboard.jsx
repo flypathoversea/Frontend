@@ -242,7 +242,7 @@ export default function AdminDashboard() {
             ) : (
               <div className="ad__grid">
                 {filteredApps.map(app => (
-                  <div key={app.id} className="ad__card" onClick={() => navigate(`/admin/application/${app.id}`)}>
+                  <div key={app.id} className="ad__card" onClick={() => window.open(`/admin/application/${app.id}`, '_blank')}>
                     <div className="ad__card-top">
                       <span className="ad__card-emoji">{EMOJI[app.visaType]}</span>
                       <StatusBadge status={app.status} />

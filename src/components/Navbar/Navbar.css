@@ -216,3 +216,72 @@
   .navbar__cta      { display: none; }
   .navbar__hamburger { display: flex; }
 }
+/* ── WhatsApp top bar ── */
+.navbar__wa-bar {
+  background: #075e54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.35rem 1.5rem;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.navbar__wa-label {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.72rem;
+}
+
+.navbar__wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: opacity 0.2s;
+}
+
+.navbar__wa-link:hover { opacity: 0.8; }
+
+.navbar__wa-icon {
+  display: flex;
+  align-items: center;
+  color: #25d366;
+}
+
+.navbar__wa-sep {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+}
+
+/* WhatsApp in mobile menu */
+.navbar__mobile-wa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar__mobile-wa-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #25d366;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.4rem 0;
+}
+
+.navbar__mobile-wa-btn:hover { opacity: 0.8; }
+
+@media (max-width: 640px) {
+  .navbar__wa-bar  { gap: 0.5rem; padding: 0.3rem 1rem; }
+  .navbar__wa-label { display: none; }
+  .navbar__wa-link  { font-size: 0.72rem; }
+}

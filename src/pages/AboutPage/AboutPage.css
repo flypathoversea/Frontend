@@ -320,3 +320,91 @@
 @media (max-width: 360px) {
   .about__team-grid { grid-template-columns: 1fr; }
 }
+/* ── Contact / WhatsApp section ── */
+.about__contact {
+  background: var(--color-navy);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.about__contact-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.about__contact-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  margin: 0.75rem 0 2.5rem;
+}
+
+.about__contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.about__contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  text-align: left;
+}
+
+.about__contact-card:hover {
+  background: rgba(37,211,102,0.12);
+  border-color: rgba(37,211,102,0.4);
+  transform: translateY(-3px);
+}
+
+.about__contact-card--email:hover {
+  background: rgba(200,168,75,0.12);
+  border-color: rgba(200,168,75,0.4);
+}
+
+.about__contact-wa-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(37,211,102,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #25d366;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+}
+
+.about__contact-wa-icon--email {
+  background: rgba(200,168,75,0.15);
+  color: var(--color-gold);
+}
+
+.about__contact-num {
+  font-size: 1rem;
+  color: var(--color-white);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.about__contact-hint {
+  font-size: 0.72rem;
+  color: #25d366;
+  letter-spacing: 0.05em;
+}
+
+.about__contact-card--email .about__contact-hint {
+  color: var(--color-gold);
+}
+
+@media (max-width: 640px) {
+  .about__contact { padding: 3.5rem 1.25rem; }
+  .about__contact-cards { grid-template-columns: 1fr; }
+}
