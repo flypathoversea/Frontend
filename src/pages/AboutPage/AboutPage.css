@@ -340,9 +340,14 @@
 
 .about__contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .about__contact-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about__contact-card {
