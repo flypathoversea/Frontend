@@ -4,8 +4,8 @@ import './AboutPage.css';
 
 const TEAM = [
   { name: 'G Anil',   role: 'Visa Expert',  },
-  { name: 'Priya Nair',     role: 'Work Visa Specialist', },
-  { name: 'Arjun Mehta',    role: 'Operation Manager',  },
+  { name: 'A Purendhar Reddy',     role: 'Work Visa Specialist', },
+  { name: 'Prem Krishna',    role: 'Operation Manager',  },
   // { name: 'Sunita Reddy',   role: 'Tourist Visa Expert',    exp: 'Schengen & Asia-Pacific specialist' },
 ];
 
