@@ -339,9 +339,12 @@
 }
 
 .about__contact-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;           /* responsive */
 }
 
 @media (max-width: 900px) {
