@@ -3,10 +3,10 @@ import Footer from '../../components/Footer/Footer.jsx';
 import './AboutPage.css';
 
 const TEAM = [
-  { name: 'Rajiv Sharma',   role: 'Founder & CEO',          exp: '20 years in immigration law' },
-  { name: 'Priya Nair',     role: 'Head of Student Visas',  exp: 'Former UK Home Office advisor' },
-  { name: 'Arjun Mehta',    role: 'Work Visa Specialist',   exp: '12 years in corporate relocation' },
-  { name: 'Sunita Reddy',   role: 'Tourist Visa Expert',    exp: 'Schengen & Asia-Pacific specialist' },
+  { name: 'G Anil',   role: 'Visa Expert',  },
+  { name: 'Priya Nair',     role: 'Work Visa Specialist', },
+  { name: 'Arjun Mehta',    role: 'Operation Manager',  },
+  // { name: 'Sunita Reddy',   role: 'Tourist Visa Expert',    exp: 'Schengen & Asia-Pacific specialist' },
 ];
 
 const MILESTONES = [
@@ -27,7 +27,7 @@ export default function AboutPage() {
       <section className="about__hero">
         <div className="about__hero-content">
           <p className="about__eyebrow">Who We Are</p>
-          <h1 className="about__title">Turning Visa Dreams<br /><span>Into Reality Since 2010</span></h1>
+          <h1 className="about__title">Turning Visa Dreams<br /><span>Into Reality</span></h1>
           <p className="about__subtitle">
             Flypath Overseas is a leading immigration services firm based in Hyderabad, India.
             We specialise in student, work, and tourist visa applications for over 60 countries worldwide.
@@ -53,7 +53,7 @@ export default function AboutPage() {
               requirements of your destination country and visa type.
             </p>
           </div>
-          <div className="about__mission-stats">
+          {/* <div className="about__mission-stats">
             {[
               { num: '15,000+', label: 'Visas Approved' },
               { num: '60+',     label: 'Countries Covered' },
@@ -67,12 +67,12 @@ export default function AboutPage() {
                 <span className="about__stat-label">{label}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="about__timeline">
+      {/* <section className="about__timeline">
         <div className="about__timeline-inner">
           <div className="about__section-header">
             <p className="about__eyebrow">Our Journey</p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team */}
       <section className="about__team">
